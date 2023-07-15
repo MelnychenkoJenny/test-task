@@ -1,10 +1,20 @@
-import { Container } from './App.styled';
+import { Error } from 'components/Error';
+import { Layout } from 'components/Layout';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+const Recipes = lazy(() => import('../../page/Recipes'));
+const RecipesDetails = lazy(() => import('../../page/RecipesDetails'));
 
 export const App = () => {
-
   return (
-    <Container>
-      <div>beer recipes</div>
-    </Container>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Recipes />} />
+          <Route path="/:id" element={<RecipesDetails />} />
+        </Route>
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </>
   );
 };
