@@ -1,4 +1,6 @@
-import { BackBtn, ContainerError } from './Error.styled';
+import { BackBtn } from 'page/RecipesDetails.styled';
+import { ContainerError } from './Error.styled';
+
 import EmptyImg from './errorImg.png';
 
 export const Error = ({ error }) => {

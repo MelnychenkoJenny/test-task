@@ -1,69 +1,104 @@
-import { selectRecipes } from 'store/recipes/selectors';
+import {
+  selectDeleteButtonVisible,
+  selectDeleteSelectedRecipes,
+  selectGetVisibleRecipes,
+  selectPageForVisible,
+  selectRecipes,
+  selectSelectedRecipes,
+  selectSelectRecipe,
+  selectVisibleRecipes,
+} from 'store/recipes/selectors';
 import { useEffect, useRef } from 'react';
 import useStore from 'store/recipes/store';
-import { ListItem } from './RecipeList.styled';
-import { Link, useLocation } from 'react-router-dom';
+import {
+  ButtonDelete,
+  Info,
+  InfoText,
+  List,
+  ListItem,
+  ListItemLink,
+} from './RecipeList.styled';
+import { useLocation } from 'react-router-dom';
 
 export const RecipeList = () => {
   const recipes = useStore(selectRecipes);
-  const visibleRecipes = useStore(state => state.visibleRecipes);
-  const selectRecipe = useStore(state => state.selectRecipe);
-  const selectedRecipes = useStore(state => state.selectedRecipes);
-  const deleteButtonVisible = useStore(
-		(state) => state.deleteButtonVisible
-	);
-  const deleteSelectedRecipes = useStore(
-		(state) => state.deleteSelectedRecipes
-	);
+  const visibleRecipes = useStore(selectVisibleRecipes);
+  const selectRecipe = useStore(selectSelectRecipe);
+  const selectedRecipes = useStore(selectSelectedRecipes);
+  const deleteButtonVisible = useStore(selectDeleteButtonVisible);
+  const getVisibleRecipes = useStore(selectGetVisibleRecipes);
+  const deleteSelectedRecipes = useStore(selectDeleteSelectedRecipes);
+  const pageForVisible = useStore(selectPageForVisible);
   const containerRef = useRef(null);
   const location = useLocation();
-    
 
   useEffect(() => {
     const containerRefCurrent = containerRef.current;
+
     const handleContextMenu = event => {
       event.preventDefault();
-      const selectedRecipeId = event.target.closest('li').dataset.recipeId;
-      const selectedRecipe = recipes.find(
-        recipe => recipe.id.toString() === selectedRecipeId
-      );
-      selectRecipe(selectedRecipe);
+      const listItem = event.target.closest('li');
+
+      if (listItem) {
+        const selectedRecipeId = listItem.dataset.recipeId;
+        const selectedRecipe = recipes.find(
+          recipe => recipe.id.toString() === selectedRecipeId
+        );
+
+        selectRecipe(selectedRecipe);
+        return;
+      }
     };
     containerRefCurrent.addEventListener('contextmenu', handleContextMenu);
-
     return () => {
       containerRefCurrent.removeEventListener('contextmenu', handleContextMenu);
     };
-  }, [recipes, selectRecipe]);
+  }, [recipes, selectRecipe, selectedRecipes]);
+
+  useEffect(() => {
+    getVisibleRecipes(pageForVisible);
+  }, [getVisibleRecipes, pageForVisible]);
 
   const handleDelete = () => {
-		deleteSelectedRecipes();
-	};
+    deleteSelectedRecipes();
+    getVisibleRecipes(pageForVisible);
+  };
 
-  // console.log(`all`,recipes);
-  // console.log(`visible array`, visibleRecipes);
   return (
     <div ref={containerRef}>
-      <ul>
-        {visibleRecipes.map(recipe => (
-          <ListItem
-            key={recipe.id}
-            data-recipe-id={recipe.id}
-            selected={selectedRecipes.includes(recipe)}
-          >
-            <Link to={`${recipe.id}`} state={{from: location}}>
-              <h3>
-                {recipe.id}
-                {recipe.name}
-              </h3>
-              <p>{recipe.tagline}</p>
-              {recipe.id}
-              {recipe.name}
-            </Link>
-          </ListItem>
-        ))}
-      </ul>
-       {deleteButtonVisible && <button type='button' onClick={handleDelete}>DELETE</button>}
+      <List>
+        {visibleRecipes.map(recipe => {
+          return (
+            <ListItem
+              key={recipe.id}
+              data-recipe-id={recipe.id}
+              selected={selectedRecipes.includes(recipe)}
+            >
+              <ListItemLink to={`${recipe.id}`} state={{ from: location }}>
+                <img src={recipe.image_url} alt={recipe.name} width="40"></img>
+                <Info>
+                  <h3>{recipe.name}</h3>
+
+                  <InfoText>
+                    <p>{recipe.tagline}</p>
+                    <p>First brewed: {recipe.first_brewed}</p>
+                    <p>Attenuation level: {recipe.attenuation_level}</p>
+                  </InfoText>
+                </Info>
+              </ListItemLink>
+            </ListItem>
+          );
+        })}
+      </List>
+      {deleteButtonVisible && (
+        <ButtonDelete
+          type="button"
+          onClick={handleDelete}
+          unvisible={selectedRecipes.length === 0}
+        >
+          DELETE
+        </ButtonDelete>
+      )}
     </div>
   );
 };

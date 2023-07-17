@@ -1,44 +1,49 @@
 import { Loading } from 'components/Loading';
 import { RecipeList } from 'components/RecipeList';
 import { useEffect, useRef } from 'react';
+import { selectCurrentPage, selectFetchRecipes, selectIsPageLoaded, selectLoading, selectNextPage, selectPageForVisible, selectPrevPage, selectVisibleRecipes } from 'store/recipes/selectors';
 import useStore from 'store/recipes/store';
+import { Button, ButtonBox } from './Recipes.styled';
 
 const Recipes = () => {
-  const fetchRecipes = useStore(state => state.fetchRecipes);
-  const loading = useStore(state => state.loading);
+  const fetchRecipes = useStore(selectFetchRecipes);
+  const loading = useStore(selectLoading);
+  const visibleRecipes = useStore(selectVisibleRecipes);
+  const currentPage = useStore(selectCurrentPage);
+  const nextPage = useStore(selectNextPage);
+  const prevPage = useStore(selectPrevPage);
+  const pageForVisible = useStore(selectPageForVisible);
+  const isPageLoaded = useStore(selectIsPageLoaded);
 
-  const recipes = useStore(state => state.recipes);
-  const currentPage = useStore(state => state.currentPage);
-  const totalPages = useStore(state => state.totalPages);
-  const nextPage = useStore(state => state.nextPage);
-  const prevPage = useStore(state => state.prevPage);
   const listRef = useRef(null);
-
   useEffect(() => {
+    if (isPageLoaded) return;
     fetchRecipes(currentPage);
-  }, [fetchRecipes, currentPage]);
+  }, [fetchRecipes, currentPage, isPageLoaded]);
 
   useEffect(() => {
     // Scroll to top when changing page
     window.scrollTo(0, 0);
-  }, [currentPage]);
+  }, [currentPage, pageForVisible]);
+
 
   return (
     <>
-      <div>Recipes page</div>
       <div ref={listRef}>
         <RecipeList />
-        {!recipes.length && <p>You have already viewed all the recipes.</p>}
+        {!visibleRecipes.length && (
+          <p>You have already viewed all the recipes.</p>
+        )}
       </div>
       {loading && <Loading />}
-      <button onClick={prevPage} disabled={currentPage <= 1}>
-        Previous
-      </button>
-      <button
-        onClick={nextPage}
-        disabled={currentPage >= totalPages || !recipes.length}>
-        Next
-      </button>
+      <ButtonBox>
+        <Button type="button" onClick={prevPage} disabled={pageForVisible <= 1}>
+          Previous
+        </Button>
+        <Button type="button" onClick={nextPage} disabled={!visibleRecipes.length}>
+          Next
+        </Button>
+      </ButtonBox>
     </>
   );
 };
