@@ -122,7 +122,7 @@ const useStore = create(
         try {
           const response = await axios.get(`${API_URL}/${id}`);
           const recipeDetails = await response.data[0];
-
+// console.log(`g`, recipeDetails)
           set({ recipeDetails, isLoading: false });
         } catch (e) {
           let error = e;

@@ -1,3 +1,4 @@
+import { Loading } from 'components/Loading';
 import { selectRecipeDetails } from 'store/recipes/selectors';
 import useStore from 'store/recipes/store';
 import {
@@ -9,15 +10,15 @@ import {
 
 export const ListIngredients = () => {
   const recipeDetails = useStore(selectRecipeDetails);
-  const { ingredients, food_pairing, brewers_tips, contributed_by } = recipeDetails;
-    
+  const { food_pairing, brewers_tips, contributed_by } = recipeDetails;
   return (
     <>
+      {recipeDetails.length ===0 && recipeDetails ? (<Loading/>) : (<>
       <IngredientsContainer>
         <div>
           <IngredientsTitle>Malt</IngredientsTitle>
           <IngredientsList>
-            {ingredients?.malt.map((malt, index) => (
+            {recipeDetails.ingredients.malt.map((malt, index) => (
               <li key={index}>
                 <span>{malt.name}</span> - {malt.amount.value} {malt.amount.unit}
               </li>
@@ -27,7 +28,7 @@ export const ListIngredients = () => {
         <div>
           <IngredientsTitle>Hops</IngredientsTitle>
           <IngredientsList>
-            {ingredients?.hops.map((hop, index) => (
+            {recipeDetails.ingredients.hops.map((hop, index) => (
               <li key={index}>
                 <span>{hop.name}</span> - {hop.amount.value} {hop.amount.unit} (
                 {hop.add}, {hop.attribute})
@@ -46,12 +47,12 @@ export const ListIngredients = () => {
       </IngredientsContainer>
       <div style={{ textAlign: 'center' }}>
         <h3>Yeast</h3>
-        <div>{ingredients?.yeast}</div>
+        <div>{recipeDetails.ingredients.yeast}</div>
         <div>
           <Tips>Brewers tips: {brewers_tips}</Tips>
           <p>Contributed by: {contributed_by}</p>
         </div> 
-       </div>
+       </div></>)}
     </>
   );
 };
