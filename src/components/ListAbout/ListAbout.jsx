@@ -1,14 +1,14 @@
-// import { selectRecipeDetails } from 'store/recipes/selectors';
-// import useStore from 'store/recipes/store';
+import { selectRecipeDetails } from 'store/recipes/selectors';
+import useStore from 'store/recipes/store';
 import { ListStyleAbout } from './ListAbout.styled';
 
 export const ListAbout = () => {
-  // const recipeDetails = useStore(selectRecipeDetails);
-  // const { abv, ibu, ebc, srm, ph, attenuation_level, volume, boil_volume } = recipeDetails;
+  const recipeDetails = useStore(selectRecipeDetails);
+  const { abv, ibu, ebc, srm, ph, attenuation_level, volume, boil_volume } = recipeDetails;
   
   return (
     <ListStyleAbout>
-      {/* <li>
+      <li>
         <span>ABV:</span>
         {abv}
       </li>
@@ -40,7 +40,7 @@ export const ListAbout = () => {
       <li>
         <span>Boil-volume:</span>
         {boil_volume.value} {boil_volume.unit}
-      </li> */}
+      </li>
     </ListStyleAbout>
   );
 };
