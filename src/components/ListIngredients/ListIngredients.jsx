@@ -1,20 +1,20 @@
 import { selectRecipeDetails } from 'store/recipes/selectors';
 import useStore from 'store/recipes/store';
 import {
-  /*IngredientsContainer,
+  IngredientsContainer,
   IngredientsList,
-  IngredientsTitle,*/
+  IngredientsTitle,
   Tips,
 } from './ListIngredients.styled';
 
 export const ListIngredients = () => {
   const recipeDetails = useStore(selectRecipeDetails);
-  const { /*ingredients: {malt, hops, yeast}, food_pairing,*/ brewers_tips, contributed_by } = recipeDetails;
+  const { ingredients: {malt, hops, yeast}, food_pairing, brewers_tips, contributed_by } = recipeDetails;
     
   return (
     <>
-      {/* <IngredientsContainer> */}
-        {/* <div>
+      <IngredientsContainer>
+        <div>
           <IngredientsTitle>Malt</IngredientsTitle>
           <IngredientsList>
             {malt.map((malt, index) => (
@@ -47,11 +47,11 @@ export const ListIngredients = () => {
       <div style={{ textAlign: 'center' }}>
         <h3>Yeast</h3>
         <div>{yeast}</div>
-        <div> */}
+        <div>
           <Tips>Brewers tips: {brewers_tips}</Tips>
           <p>Contributed by: {contributed_by}</p>
-        {/* </div> */}
-      {/* </div> */}
+        </div> 
+       </div>
     </>
   );
 };

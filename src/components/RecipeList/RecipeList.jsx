@@ -76,7 +76,7 @@ export const RecipeList = () => {
               data-recipe-id={recipe.id}
               selected={selectedRecipes.includes(recipe)}
             >
-              <ListItemLink to={`${recipe.id}`} state={{ from: location }}>
+              <ListItemLink to={`:${recipe.id}`} state={{ from: location }}>
                 <img src={recipe.image_url || emptyImg} alt={recipe.name} width="40"></img>
                 <Info>
                   <h3>{recipe.name}</h3>
