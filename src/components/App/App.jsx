@@ -12,8 +12,8 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Recipes />} />
           <Route path="/:id" element={<RecipesDetails />} />
+          <Route path="*" element={<Error />} />
         </Route>
-        <Route path="*" element={<Error />} />
       </Routes>
     </>
   );
