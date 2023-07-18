@@ -44,9 +44,9 @@ const RecipesDetails = () => {
             <Image src={image_url || emptyImg} alt={name} width="80"></Image>
 
             <DetailInfo>
-              <h2 style={{ textAlign: 'center' }}>{name}</h2>
-              <p style={{ textAlign: 'center' }}>{tagline}</p>
-              <p style={{ textAlign: 'center' }}>
+              <h2 style={{ textAlign: 'center', marginBottom: '15px' }}>{name}</h2>
+              <p style={{ textAlign: 'center', marginBottom: '10px' }}>{tagline}</p>
+              <p style={{ textAlign: 'center', marginBottom: '10px' }}>
                 First-brewed: {first_brewed}
               </p>
               <p>{description}</p>
