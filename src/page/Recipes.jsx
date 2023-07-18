@@ -1,3 +1,4 @@
+import { ContainerError } from 'components/Error/Error.styled';
 import { Loading } from 'components/Loading';
 import { RecipeList } from 'components/RecipeList';
 import { useEffect, useRef } from 'react';
@@ -13,6 +14,9 @@ import {
 } from 'store/recipes/selectors';
 import useStore from 'store/recipes/store';
 import { Button, ButtonBox } from './Recipes.styled';
+import errorImg from '../components/Error/errorImg.png';
+import { Container } from 'components/App/App.styled';
+
 
 const Recipes = () => {
   const fetchRecipes = useStore(selectFetchRecipes);
@@ -37,12 +41,20 @@ const Recipes = () => {
 
   return (
     <>
-      <div ref={listRef}>
+      <Container ref={listRef}>
         <RecipeList />
         {!visibleRecipes.length && (
-          <p>You have already viewed all the recipes.</p>
+          <ContainerError>
+          <p style={{ textAlign: 'center' }}>You have already viewed all the recipes.</p>
+          <img
+        src={errorImg}
+        alt="emptyImageCat"
+        style={{
+          width: '170px',
+        }}/>
+        </ContainerError>
         )}
-      </div>
+      </Container>
       {loading && <Loading />}
       <ButtonBox>
         <Button type="button" onClick={prevPage} disabled={pageForVisible <= 1}>

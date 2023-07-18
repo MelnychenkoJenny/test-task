@@ -1,7 +1,7 @@
 import { BackBtn } from 'page/RecipesDetails.styled';
 import { ContainerError } from './Error.styled';
 
-import EmptyImg from './errorImg.png';
+import errorImg from './errorImg.png';
 
 export const Error = ({ error }) => {
   return (
@@ -11,7 +11,7 @@ export const Error = ({ error }) => {
       </p>
       <BackBtn to="/">Home Page</BackBtn>
       <img
-        src={EmptyImg}
+        src={errorImg}
         alt="emptyImageCat"
         style={{
           width: '170px',

@@ -7,7 +7,7 @@ export const ContainerError = styled(Container)`
   justify-content: center;
   align-items: center;
   gap: 20px;
-  min-height: calc(100vh - 110px);
+  min-height: calc(100vh - 350px);
   padding: 30px;
   width: 50%;
   background-color: ${({ theme: { colors } }) => colors.bgAlfa};

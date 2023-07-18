@@ -7,4 +7,5 @@ export const Container = styled.div`
   padding-right: 15px;
   padding-top: 15px;
   padding-bottom: 15px;
+   min-height: calc(100vh - 290px);
 `;

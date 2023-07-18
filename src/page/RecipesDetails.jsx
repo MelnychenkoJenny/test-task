@@ -17,6 +17,7 @@ import {
 
 import { ListAbout } from 'components/ListAbout/ListAbout';
 import { ListIngredients } from 'components/ListIngredients/ListIngredients';
+import emptyImg from '../components/Error/imagesEmpty.png'
 
 const RecipesDetails = () => {
   const getRecipeById = useStore(selectGetRecipeById);
@@ -40,7 +41,7 @@ const RecipesDetails = () => {
       ) : (
         <>
           <DetailContainer>
-            <Image src={image_url} alt={name} width="80"></Image>
+            <Image src={image_url || emptyImg} alt={name} width="80"></Image>
 
             <DetailInfo>
               <h2 style={{ textAlign: 'center' }}>{name}</h2>

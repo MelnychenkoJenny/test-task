@@ -8,6 +8,7 @@ export const List = styled.ul`
   justify-content: center;
   gap: 10px 10px;
   text-align: center;
+  
 `;
 
 export const ListItem = styled.li`

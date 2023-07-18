@@ -20,6 +20,7 @@ import {
   ListItemLink,
 } from './RecipeList.styled';
 import { useLocation } from 'react-router-dom';
+import emptyImg from '../Error/imagesEmpty.png'
 
 export const RecipeList = () => {
   const recipes = useStore(selectRecipes);
@@ -76,7 +77,7 @@ export const RecipeList = () => {
               selected={selectedRecipes.includes(recipe)}
             >
               <ListItemLink to={`${recipe.id}`} state={{ from: location }}>
-                <img src={recipe.image_url} alt={recipe.name} width="40"></img>
+                <img src={recipe.image_url || emptyImg} alt={recipe.name} width="40"></img>
                 <Info>
                   <h3>{recipe.name}</h3>
 
