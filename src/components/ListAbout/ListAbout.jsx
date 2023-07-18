@@ -32,7 +32,7 @@ export const ListAbout = () => {
         <span>Attenuation-level:</span>
         {attenuation_level}
       </li>
-      <li>
+      {/* <li>
         <span>Volume:</span>
         {volume.value}
         {volume.unit}
@@ -40,7 +40,7 @@ export const ListAbout = () => {
       <li>
         <span>Boil-volume:</span>
         {boil_volume.value} {boil_volume.unit}
-      </li>
+      </li> */}
     </ListStyleAbout>
   );
 };
