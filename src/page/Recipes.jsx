@@ -17,7 +17,6 @@ import { Button, ButtonBox } from './Recipes.styled';
 import errorImg from '../components/Error/errorImg.png';
 import { Container } from 'components/App/App.styled';
 
-
 const Recipes = () => {
   const fetchRecipes = useStore(selectFetchRecipes);
   const loading = useStore(selectLoading);
@@ -43,16 +42,19 @@ const Recipes = () => {
     <>
       <Container ref={listRef}>
         <RecipeList />
-        {!visibleRecipes.length && (
+        {!visibleRecipes.length && loading && (
           <ContainerError>
-          <p style={{ textAlign: 'center' }}>You have already viewed all the recipes.</p>
-          <img
-        src={errorImg}
-        alt="emptyImageCat"
-        style={{
-          width: '170px',
-        }}/>
-        </ContainerError>
+            <p style={{ textAlign: 'center' }}>
+              You have already viewed all the recipes.
+            </p>
+            <img
+              src={errorImg}
+              alt="emptyImageCat"
+              style={{
+                width: '170px',
+              }}
+            />
+          </ContainerError>
         )}
       </Container>
       {loading && <Loading />}
