@@ -7,11 +7,11 @@ import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
+  <React.StrictMode>
   <BrowserRouter basename="/test-task">
     <ThemeProvider theme={theme}>
       <App />
     </ThemeProvider>
   </BrowserRouter>
-  //  </React.StrictMode>
+   </React.StrictMode>
 );
