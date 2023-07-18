@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const BackBtn = styled(Link)`
   display: flex;
@@ -12,6 +12,8 @@ export const BackBtn = styled(Link)`
   border: 1px solid ${({ theme: { colors } }) => colors.accent};
   border-radius: 10px;
   margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
   color: ${({ theme: { colors } }) => colors.accentDark};
   font-weight: 600;
   background-color: ${({ theme: { colors } }) => colors.white};
@@ -24,14 +26,33 @@ export const BackBtn = styled(Link)`
   }
 `;
 
-
 export const DetailContainer = styled.div`
-padding: 15px;
-background-color: ${({ theme: { colors } }) => colors.backgroundCard};
-border-radius: 10px;
-`
+  padding: 15px;
+  background-color: ${({ theme: { colors } }) => colors.backgroundCard};
+  border-radius: 10px;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+  }
+  @media screen and (min-width: 1200px) {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+  }
+`;
 
 export const DetailInfo = styled.div`
-margin-top: 15px;
-text-align: justify;
-`
+  margin-top: 15px;
+  text-align: justify;
+`;
+
+export const Image = styled.img`
+margin: 0 auto;
+@media screen and (min-width: 768px) {
+  margin: 0;
+  width: 100px;
+`;

@@ -14,6 +14,7 @@ import {
   ButtonDelete,
   Info,
   InfoText,
+  InfoUse,
   List,
   ListItem,
   ListItemLink,
@@ -84,6 +85,10 @@ export const RecipeList = () => {
                     <p>First brewed: {recipe.first_brewed}</p>
                     <p>Attenuation level: {recipe.attenuation_level}</p>
                   </InfoText>
+                  <InfoUse>
+                    Right click to select and delete. If you are using a phone,
+                    press it.
+                  </InfoUse>
                 </Info>
               </ListItemLink>
             </ListItem>

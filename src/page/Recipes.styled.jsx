@@ -1,14 +1,14 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ButtonBox = styled.div`
-display: flex;
-justify-content: center;
-gap: 10px;
-margin-top: 15px;
-`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+`;
 
 export const Button = styled.button`
-display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -28,7 +28,6 @@ display: flex;
     box-shadow: ${({ theme: { colors } }) => colors.shadow};
   }
 
-  ${(props) =>
-    props.disabled && `background-color: lightgrey; cursor: not-allowed	;`
-}
-`
+  ${props =>
+    props.disabled && `background-color: lightgrey; cursor: not-allowed	;`}
+`;

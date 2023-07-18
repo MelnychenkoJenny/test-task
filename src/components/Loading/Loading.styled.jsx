@@ -10,9 +10,9 @@ const spin = keyframes`
   `;
 
 export const LoadingStyle = styled.div`
-      position: fixed;
-    top: 15%;
-    left: 50%;
+  position: fixed;
+  top: 15%;
+  left: 50%;
   width: 80px;
   height: 80px;
   border: 10px solid ${({ theme: { colors } }) => colors.loadingBorder};

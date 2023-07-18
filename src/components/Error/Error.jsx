@@ -6,10 +6,10 @@ import EmptyImg from './errorImg.png';
 export const Error = ({ error }) => {
   return (
     <ContainerError>
-      <p style={{textAlign: 'center',}}>
-      Oops... Something went wrong. {error} Try again later. 🙄
+      <p style={{ textAlign: 'center' }}>
+        Oops... Something went wrong. {error} Try again later. 🙄
       </p>
-      <BackBtn to='/'>Home Page</BackBtn>
+      <BackBtn to="/">Home Page</BackBtn>
       <img
         src={EmptyImg}
         alt="emptyImageCat"

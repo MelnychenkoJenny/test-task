@@ -1,11 +1,12 @@
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { BsFillSuitHeartFill } from 'react-icons/bs';
 
 export const MainTitle = styled.h1`
-font-size: 40px;
-    font-weight: 800;
-    letter-spacing: 3px;`
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: 3px;
+`;
 
 export const Header = styled.header`
   display: flex;
@@ -47,8 +48,8 @@ const heartbeat = keyframes`
 `;
 
 export const HeartIcon = styled(BsFillSuitHeartFill)`
-animation: ${heartbeat} 1s infinite;
-`
+  animation: ${heartbeat} 1s infinite;
+`;
 
 export const Footer = styled.footer`
   display: flex;

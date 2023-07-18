@@ -20,7 +20,6 @@ const useStore = create(
       selectedRecipes: [],
       recipeDetails: [],
       deleteButtonVisible: false,
-      
 
       fetchRecipes: async page => {
         set({ loading: true });
@@ -43,7 +42,6 @@ const useStore = create(
           get().getVisibleRecipes(page);
         } catch (e) {
           let error = e;
-          // custom error
           if (e.statusCode === 400) {
             error = await e.json();
           }
@@ -128,7 +126,6 @@ const useStore = create(
           set({ recipeDetails, isLoading: false });
         } catch (e) {
           let error = e;
-          // custom error
           if (e.statusCode === 400) {
             error = await e.json();
           }
@@ -141,10 +138,10 @@ const useStore = create(
     {
       name: 'recipes-storage', // Унікальне ім'я для збереження
       getStorage: () => createJSONStorage(() => localStorage), // Використовуємо localStorage
-      partialize: (state) =>
-      Object.fromEntries(
-        Object.entries(state).filter(([key]) => key !== 'selectedRecipes')
-      ),
+      partialize: state =>
+        Object.fromEntries(
+          Object.entries(state).filter(([key]) => key !== 'selectedRecipes')
+        ),
     }
   )
 );

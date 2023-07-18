@@ -1,7 +1,16 @@
 import { Loading } from 'components/Loading';
 import { RecipeList } from 'components/RecipeList';
 import { useEffect, useRef } from 'react';
-import { selectCurrentPage, selectFetchRecipes, selectIsPageLoaded, selectLoading, selectNextPage, selectPageForVisible, selectPrevPage, selectVisibleRecipes } from 'store/recipes/selectors';
+import {
+  selectCurrentPage,
+  selectFetchRecipes,
+  selectIsPageLoaded,
+  selectLoading,
+  selectNextPage,
+  selectPageForVisible,
+  selectPrevPage,
+  selectVisibleRecipes,
+} from 'store/recipes/selectors';
 import useStore from 'store/recipes/store';
 import { Button, ButtonBox } from './Recipes.styled';
 
@@ -26,7 +35,6 @@ const Recipes = () => {
     window.scrollTo(0, 0);
   }, [currentPage, pageForVisible]);
 
-
   return (
     <>
       <div ref={listRef}>
@@ -40,7 +48,11 @@ const Recipes = () => {
         <Button type="button" onClick={prevPage} disabled={pageForVisible <= 1}>
           Previous
         </Button>
-        <Button type="button" onClick={nextPage} disabled={!visibleRecipes.length}>
+        <Button
+          type="button"
+          onClick={nextPage}
+          disabled={!visibleRecipes.length}
+        >
           Next
         </Button>
       </ButtonBox>
