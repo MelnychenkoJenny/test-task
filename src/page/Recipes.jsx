@@ -42,7 +42,7 @@ const Recipes = () => {
     <>
       <Container ref={listRef}>
         <RecipeList />
-        {!visibleRecipes.length && loading && (
+        {!visibleRecipes.length && !loading && (
           <ContainerError>
             <p style={{ textAlign: 'center' }}>
               You have already viewed all the recipes.
