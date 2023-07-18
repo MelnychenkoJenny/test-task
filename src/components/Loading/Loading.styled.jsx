@@ -11,7 +11,7 @@ const spin = keyframes`
 
 export const LoadingStyle = styled.div`
   position: fixed;
-  top: 15%;
+  top: 50%;
   left: 50%;
   width: 80px;
   height: 80px;

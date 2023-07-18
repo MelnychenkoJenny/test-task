@@ -34,12 +34,12 @@ export const ListAbout = () => {
       </li>
       <li>
         <span>Volume:</span>
-        {volume.value}
-        {volume.unit}
+        {volume?.value}
+        {volume?.unit}
       </li>
       <li>
         <span>Boil-volume:</span>
-        {boil_volume.value} {boil_volume.unit}
+        {boil_volume?.value} {boil_volume?.unit}
       </li>
     </ListStyleAbout>
   );

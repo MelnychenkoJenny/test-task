@@ -9,7 +9,7 @@ import {
 
 export const ListIngredients = () => {
   const recipeDetails = useStore(selectRecipeDetails);
-  const { ingredients: {malt, hops, yeast}, food_pairing, brewers_tips, contributed_by } = recipeDetails;
+  const { ingredients, food_pairing, brewers_tips, contributed_by } = recipeDetails;
     
   return (
     <>
@@ -17,7 +17,7 @@ export const ListIngredients = () => {
         <div>
           <IngredientsTitle>Malt</IngredientsTitle>
           <IngredientsList>
-            {malt.map((malt, index) => (
+            {ingredients?.malt.map((malt, index) => (
               <li key={index}>
                 <span>{malt.name}</span> - {malt.amount.value} {malt.amount.unit}
               </li>
@@ -27,7 +27,7 @@ export const ListIngredients = () => {
         <div>
           <IngredientsTitle>Hops</IngredientsTitle>
           <IngredientsList>
-            {hops.map((hop, index) => (
+            {ingredients?.hops.map((hop, index) => (
               <li key={index}>
                 <span>{hop.name}</span> - {hop.amount.value} {hop.amount.unit} (
                 {hop.add}, {hop.attribute})
@@ -46,7 +46,7 @@ export const ListIngredients = () => {
       </IngredientsContainer>
       <div style={{ textAlign: 'center' }}>
         <h3>Yeast</h3>
-        <div>{yeast}</div>
+        <div>{ingredients?.yeast}</div>
         <div>
           <Tips>Brewers tips: {brewers_tips}</Tips>
           <p>Contributed by: {contributed_by}</p>
