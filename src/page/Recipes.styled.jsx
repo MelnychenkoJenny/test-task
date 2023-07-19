@@ -12,8 +12,7 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
   gap: 10px;
-  width: 100px;
-  height: 30px;
+  min-height: 40px;
   padding: 5px;
   border: 1px solid ${({ theme: { colors } }) => colors.accent};
   border-radius: 10px;
@@ -26,6 +25,9 @@ export const Button = styled.button`
   :focus {
     scale: 1.1;
     box-shadow: ${({ theme: { colors } }) => colors.shadow};
+  }
+  svg {
+    fill: ${({ theme: { colors } }) => colors.accentDark};
   }
 
   ${props =>

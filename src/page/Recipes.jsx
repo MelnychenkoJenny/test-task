@@ -17,6 +17,7 @@ import { Button, ButtonBox } from './Recipes.styled';
 import errorImg from '../components/Error/errorImg.png';
 import { Container } from 'components/App/App.styled';
 
+
 const Recipes = () => {
   const fetchRecipes = useStore(selectFetchRecipes);
   const loading = useStore(selectLoading);

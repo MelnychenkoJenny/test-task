@@ -14,10 +14,11 @@ import {
   DetailInfo,
   Image,
 } from './RecipesDetails.styled';
-
 import { ListAbout } from 'components/ListAbout/ListAbout';
 import { ListIngredients } from 'components/ListIngredients/ListIngredients';
 import emptyImg from '../components/Error/imagesEmpty.png'
+import { RiArrowGoBackLine } from 'react-icons/ri';
+
 
 const RecipesDetails = () => {
   const getRecipeById = useStore(selectGetRecipeById);
@@ -35,7 +36,9 @@ const RecipesDetails = () => {
 
   return (
     <>
-      <BackBtn to={backLinkLocationRef.current}>Go back</BackBtn>
+      <BackBtn to={backLinkLocationRef.current}>
+        <RiArrowGoBackLine/>
+        Go back</BackBtn>
       {loading ? (
         <Loading />
       ) : (

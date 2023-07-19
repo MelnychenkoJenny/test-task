@@ -22,13 +22,13 @@ export const Layout = () => {
         </Logo>
         <MainTitle>Beer recipes</MainTitle>
       </Header>
-      <Container>
         <Suspense fallback={<Loading />}>
           <main>
+      <Container>
             <Outlet />
+      </Container>
           </main>
         </Suspense>
-      </Container>
       <Footer>
         <HeartIcon />
         <p>performed by Evheniia Melnychenko</p>

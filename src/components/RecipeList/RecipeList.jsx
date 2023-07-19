@@ -20,6 +20,7 @@ import {
   ListItemLink,
 } from './RecipeList.styled';
 import { useLocation } from 'react-router-dom';
+import { RiDeleteBin5Line } from 'react-icons/ri';
 import emptyImg from '../Error/imagesEmpty.png'
 
 export const RecipeList = () => {
@@ -102,7 +103,8 @@ export const RecipeList = () => {
           onClick={handleDelete}
           unvisible={selectedRecipes.length === 0}
         >
-          DELETE
+          DELETE {selectedRecipes.length}
+          <RiDeleteBin5Line/>
         </ButtonDelete>
       )}
     </div>

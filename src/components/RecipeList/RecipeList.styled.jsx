@@ -20,6 +20,7 @@ export const ListItem = styled.li`
   box-shadow: ${({ theme: { colors } }) => colors.shadow};
   transition: scale 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
+  
   :hover {
     scale: 1.05;
   }
@@ -45,9 +46,16 @@ export const ListItemLink = styled(Link)`
 `;
 
 export const ButtonDelete = styled(Button)`
+display: flex;
+flex-direction: column;
+svg {
+  width: 30px;
+  height: 30px;
+}
 position: fixed;
 top: 3%;
 left: 65%;
+border: 2px solid ${({ theme: { colors } }) => colors.infoRed};
 }
 @media screen and (min-width: 768px) {
     left: 80%;
