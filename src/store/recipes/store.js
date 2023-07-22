@@ -83,7 +83,7 @@ const useStore = create(
         set(state => {
           const start = (pageForVisible - 1) * RECIPES_PER_VISIBLE_ON_PAGE;
           const end = pageForVisible * RECIPES_PER_VISIBLE_ON_PAGE;
-          const visibleRecipes = state.recipes.slice(start, end);
+          const visibleRecipes = [...state.recipes].slice(start, end);
           return {
             visibleRecipes,
             loading: false,
@@ -122,7 +122,6 @@ const useStore = create(
         try {
           const response = await axios.get(`${API_URL}/${id}`);
           const recipeDetails = await response.data[0];
-// console.log(`g`, recipeDetails)
           set({ recipeDetails, isLoading: false });
         } catch (e) {
           let error = e;
